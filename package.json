@@ -1,0 +1,29 @@
+{
+  "name": "homelander",
+  "version": "1.0.0",
+  "description": "Landing page",
+  "main": "index.js",
+  "author": "kosiken",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "gulp build",
+    "dev": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.6",
+    "autoprefixer": "^10.4.16",
+    "clean-css": "^5.3.2",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^9.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "node-sass": "^9.0.0",
+    "tailwindcss": "^3.3.5"
+  },
+  "dependencies": {
+    "sass": "^1.69.5"
+  }
+}

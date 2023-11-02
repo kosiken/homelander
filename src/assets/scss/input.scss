@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css?family=Nunito:300,400,500,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+
+#topnav {
+  min-height: 74px;
+  .logo {
+    @apply float-left text-black;
+    line-height: 74px !important;
+  }
+}
+
+.buy-button {
+  @apply float-right leading-[74px];
+  > li {
+    @apply leading-[initial];
+  }
+  .login-btn-primary,
+  .btn-icon-dark {
+    @apply hidden;
+  }
+  .login-btn-light,
+  .btn-icon-light {
+    @apply inline-block;
+  }
+  .search-bar {
+    .menu-search {
+      form {
+        @apply relative;
+      }
+    }
+    .searchform {
+      @apply after:absolute after:end-[14px] after:top-[14px] after:text-xl after:leading-5 after:pointer-events-none;
+      input[type="text"] {
+        @apply shadow-none py-[10px] pe-[42px] ps-3 h-11 text-sm block outline-none  #{!important};
+      }
+      input[type="submit"] {
+        @apply hidden;
+      }
+      &:after {
+        content: "\f0349";
+        font-family: "Material Design Icons";
+      }
+    }
+  }
+}
+.nav-menu {
+  @apply relative mx-[10px];
+
+  a {
+    @apply block text-black dark:text-white text-[13px] bg-transparent font-bold tracking-[1px] leading-6 uppercase px-[14px] #{!important};
+    @apply py-[10px];
+  }
+
+  .menu-arrow {
+    display: inline-block;
+
+    border-width: 0 2px 2px 0;
+    top: 2rem;
+    @apply border-black absolute dark:border-white rounded-[0.5px] inline-block p-[2px] rotate-[45deg] duration-500 end-0 top-4;
+  }
+
+  &.has-submenu {
+    position: relative;
+  }
+
+  .submenu {
+    @apply hidden bg-white absolute pl-2;
+    transition: all 0.2s ease;
+    top: 100%;
+    li {
+      @apply relative;
+      a {
+        transition: all 0.3s;
+        @apply block py-[10px] px-5 clear-both whitespace-nowrap uppercase tracking-[0.04em] font-bold text-black dark:text-white leading-[17px];
+        min-height: auto;
+        font-size: 11px !important;
+        &:hover {
+          @apply text-indigo-600 dark:text-indigo-600 #{!important};
+        }
+      }
+      ul {
+        @apply list-none ps-0 m-0;
+      }
+    }
+    .submenu-arrow {
+      border-width: 0px 0.125rem 0.125rem 0px;
+      @apply absolute end-[1.25rem] top-[15px] border-black dark:border-white rounded-[0.5px] inline-block p-[2px] ltr:-rotate-[45deg] rtl:rotate-[135deg];
+    }
+
+    &.open {
+        @apply visible block;
+    }
+  }
+
+  &:focus-within {
+    .menu-arrow {
+      @apply rotate-[225deg];
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  #topnav {
+    .nav-list {
+      @apply flex flex-wrap justify-center;
+    }
+  }
+  .nav-menu {
+    a {
+      @apply px-[14px] py-[25px];
+      min-height: 62px;
+    }
+
+    .menu-arrow {
+      border-width: 0 2px 2px 0;
+      @apply top-8;
+    }
+    .submenu {
+        @apply pl-0;
+        &.open {
+            @apply hidden;
+        }
+      }
+    &:hover {
+      .menu-arrow {
+        @apply rotate-[225deg] top-[2.1rem];
+      }
+      .submenu {
+        @apply visible block;
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  #navigation {
+    @apply absolute top-[74px] start-0 w-full h-auto bg-white dark:bg-slate-900 overflow-auto;
+    @apply max-h-[400px] shadow;
+    background-color: lion;
+  }
+}
+
+
+.tns-nav {
+    @apply text-center mt-3;
+    button {
+        @apply rounded-[3px] bg-indigo-600/30 duration-500 border-0 m-1 p-[5px];
+        &.tns-nav-active {
+            @apply bg-indigo-600 rotate-[45deg];
+        }
+    }
+}
+
+/* Tns control */
+.tns-controls {
+    button[data-controls="prev"],
+    button[data-controls="next"] {
+        @apply absolute top-2/4 -translate-y-2/4 text-base w-8 h-8 rounded-full bg-white dark:bg-slate-900 text-dark dark:text-white border-0 duration-500 z-10 shadow-md dark:shadow-gray-800;
+
+        &:hover {
+            @apply bg-indigo-600 text-white;
+        }
+    }
+    button[data-controls="prev"] {
+        @apply start-0;
+    }
+    button[data-controls="next"] {
+        @apply end-0;
+    }
+}
+
+
+//Smoth Slider
+$animationSpeed: 120s;
+@keyframes scroll {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(calc(-360px * 6))}
+}
+.slider {
+	&:after {
+		transform: rotateZ(360deg);
+	}
+	.slide-track {
+		animation: scroll $animationSpeed linear infinite;
+		width: calc(360px * 20);
+	}
+}
